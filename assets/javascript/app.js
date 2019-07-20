@@ -88,6 +88,32 @@ function displayChoices(choices) {
   return result;
 }
 
+// on click event for the choices
+$(".choice").on("click", function() {
+  clearInterval(timer);
+  var selectedChoice = $(this).attr("data-answer");
+  var correctAnswerGuessed = quizzQuestions[currentQuestion].correctAnswer;
+  if (correctAnswerGuessed === selectedChoice) {
+    correctGuess++;
+    console.log("Win");
+    loadNextQuestion();
+  } else {
+    incorrectGuess++;
+    console.log("Lose");
+    loadNextQuestion();
+  }
+});
+
+function displayResult() {
+  var result = `
+  <p>Your Correct Guess ${correctGuess} questions right</p>
+  <p>Your Incorrect Guess ${incorrectGuess} questions</p>
+  <p>Total questions ${quizzQuestions.length} questions right</p>
+  <button class="btn btn-primary" id="reset">Reset Game</button>
+  `;
+  $("#displayQuestionAnswer").html(result);
+}
+
 $(".btn-primary").on("click", function() {
   $(".btn-primary").remove();
 });

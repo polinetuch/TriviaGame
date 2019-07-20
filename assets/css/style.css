@@ -4,23 +4,8 @@
 }
 
 #displayQuestionAnswer {
-  background-color: white;
+  /* background-color: pink; */
   padding: 20px;
-  border-radius: 15px;
   text-align: center;
   font-size: 25px;
 }
-
-/* #game {
-  background-color: lightgrey;
-  color: black;
-  padding: 20px;
-  border-radius: 15px;
-} */
-
-/* #time {
-  background-color: lightgrey;
-  text-align: center;
-  padding: 20px;
-  border-radius: 15px;
-} */

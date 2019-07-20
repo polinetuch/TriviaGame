@@ -21,16 +21,33 @@ var quizzQuestions = [
   }
 ];
 
-var counter = 30;
-var currentQuestion = 0;
 var correctGuess = 0;
 var incorrectGuess = 0;
+var currentQuestion = 0;
 var timer;
+var counter = 10;
 
 function displayQuestion() {
   var question = quizzQuestions[currentQuestion].question;
   var choices = quizzQuestions[currentQuestion].choices;
-  $("#displayQuestionAnswer").html("<h4>" + question + "</h4>");
-  $("#timer").html("<h4>Timer: " + counter + "</h4>");
+
+  $("#timer").html("Timer: " + counter);
+
+  $("#displayQuestionAnswer").html(
+    "<h4>" + question + "</h4>" + displayChoices(choices)
+  );
 }
 displayQuestion();
+
+function displayChoices(choices) {
+  var result = "";
+  for (var i = 0; i < choices.length; i++) {
+    result += `<p class="choice" data-answer="${choices[i]}">${choices[i]}</p>`;
+  }
+  return result;
+}
+console.log(displayChoices(choices));
+
+$(".btn-primary").on("click", function() {
+  $(".btn-primary").remove();
+});

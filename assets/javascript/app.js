@@ -33,6 +33,7 @@ function loadNextQuestion() {
   // if the last index of the question equals to the currenQuestion then stop running the time
   if (noMoreQuestion) {
     console.log("Game's over!");
+    displayResult();
   }
   // if it's not the last index of the question - repeat the countdown from 10 seconds
   else {
@@ -97,18 +98,19 @@ $(".choice").on("click", function() {
     correctGuess++;
     console.log("Win");
     loadNextQuestion();
+    $("audio#pop")[0].play();
   } else {
     incorrectGuess++;
     console.log("Lose");
     loadNextQuestion();
+    $("audio#lose")[0].play();
   }
 });
 
 function displayResult() {
   var result = `
-  <p>Your Correct Guess ${correctGuess} questions right</p>
-  <p>Your Incorrect Guess ${incorrectGuess} questions</p>
-  <p>Total questions ${quizzQuestions.length} questions right</p>
+  <p>Your Correct Guess ${correctGuess}</p>
+  <p>Your Incorrect Guess ${incorrectGuess}</p>
   <button class="btn btn-primary" id="reset">Reset Game</button>
   `;
   $("#displayQuestionAnswer").html(result);
@@ -116,4 +118,5 @@ function displayResult() {
 
 $(".btn-primary").on("click", function() {
   $(".btn-primary").remove();
+  $("audio#song")[0].play();
 });

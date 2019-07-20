@@ -20,3 +20,17 @@ var quizzQuestions = [
     correctAnswer: "Poopdeck Pappy"
   }
 ];
+
+var counter = 30;
+var currentQuestion = 0;
+var correctGuess = 0;
+var incorrectGuess = 0;
+var timer;
+
+function displayQuestion() {
+  var question = quizzQuestions[currentQuestion].question;
+  var choices = quizzQuestions[currentQuestion].choices;
+  $("#displayQuestionAnswer").html("<h4>" + question + "</h4>");
+  $("#timer").html("<h4>Timer: " + counter + "</h4>");
+}
+displayQuestion();

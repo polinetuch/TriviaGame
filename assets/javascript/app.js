@@ -31,7 +31,8 @@ var counter = 10;
 function timeUp() {
   // stop the time from keep counting down after 0
   clearInterval(timer);
-  alert("Time's Up!");
+  console.log("Time's Up!");
+  loadNextQuestion();
 }
 
 function countDown() {
@@ -62,6 +63,22 @@ function displayQuestion() {
 }
 displayQuestion();
 
+function loadNextQuestion() {
+  var noMoreQuestion = quizzQuestions.length - 1 === currentQuestion;
+
+  // if the last index of the question equals to the currenQuestion then stop running the time
+  if (noMoreQuestion) {
+    console.log("Game's over!");
+  }
+  // if it's not the last index of the question - repeat the countdown from 10 seconds
+  else {
+    // display the next question
+    currentQuestion++;
+    // recall the function to display the next question
+    displayQuestion();
+  }
+}
+
 // display choices to the browser
 function displayChoices(choices) {
   var result = "";
@@ -70,7 +87,6 @@ function displayChoices(choices) {
   }
   return result;
 }
-console.log(displayChoices(choices));
 
 $(".btn-primary").on("click", function() {
   $(".btn-primary").remove();

@@ -27,7 +27,30 @@ var currentQuestion = 0;
 var timer;
 var counter = 10;
 
+// function to clear the timer
+function timeUp() {
+  // stop the time from keep counting down after 0
+  clearInterval(timer);
+  alert("Time's Up!");
+}
+
+function countDown() {
+  // decrement the time by seconds
+  counter--;
+  // display the count down time in the html element with an id timer
+  $("#timer").html("Timer: " + counter);
+
+  // when time reaches 0, execute the timeUp function
+  if (counter === 0) {
+    timeUp();
+  }
+}
+
+// display questions to the browser
 function displayQuestion() {
+  counter = 10;
+  timer = setInterval(countDown, 1000);
+
   var question = quizzQuestions[currentQuestion].question;
   var choices = quizzQuestions[currentQuestion].choices;
 
@@ -39,6 +62,7 @@ function displayQuestion() {
 }
 displayQuestion();
 
+// display choices to the browser
 function displayChoices(choices) {
   var result = "";
   for (var i = 0; i < choices.length; i++) {
